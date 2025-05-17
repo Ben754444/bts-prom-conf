@@ -12,14 +12,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Validate config
+      - name: Backup old config
         run: |
-          /opt/prometheus/promtool check config ${{ github.workspace }}/prometheus.yml
+          if [ -f /opt/prometheus/prometheus.yml ]; then
+            cp /opt/prometheus/prometheus.yml /opt/prometheus/prometheus.yml.bak
+          fi
 
       - name: Move config
         run: |
           cp ${{ github.workspace }}/prometheus.yml /opt/prometheus/prometheus.yml
+
+
+      - name: Validate config
+        run: |
+          /opt/prometheus/promtool check config /opt/prometheus/prometheus.yml
       
       - name: Apply config
         run: |
           curl -X POST http://localhost:9090/-/reload
+
+
+      - name: Rollback config
+        if: failure()
+        run: |
+          if [ -f /opt/prometheus/prometheus.yml.bak ]; then
+            cp /opt/prometheus/prometheus.yml.bak /opt/prometheus/prometheus.yml
+            curl -X POST http://localhost:9090/-/reload
+          fi
