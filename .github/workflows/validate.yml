@@ -14,11 +14,13 @@ jobs:
         run: |
           if [ -f /opt/prometheus/prometheus.yml ]; then
             cp /opt/prometheus/prometheus.yml /opt/prometheus/prometheus.yml.bak
+            cp -r /opt/prometheus/scrape_configs /opt/prometheus/scrape_configs.bak
           fi
 
       - name: Move config
         run: |
           cp ${{ github.workspace }}/prometheus.yml /opt/prometheus/prometheus.yml
+          cp -r ${{ github.workspace }}/scrape_configs /opt/prometheus/scrape_configs
 
 
       - name: Validate config
@@ -30,4 +32,5 @@ jobs:
         run: |
           if [ -f /opt/prometheus/prometheus.yml.bak ]; then
             cp /opt/prometheus/prometheus.yml.bak /opt/prometheus/prometheus.yml
+            cp -r /opt/prometheus/scrape_configs.bak /opt/prometheus/scrape_configs
           fi
