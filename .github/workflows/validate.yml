@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Backup old config
+        run: |
+          if [ -f /opt/prometheus/prometheus.yml ]; then
+            cp /opt/prometheus/prometheus.yml /opt/prometheus/prometheus.yml.bak
+          fi
+
+      - name: Move config
+        run: |
+          cp ${{ github.workspace }}/prometheus.yml /opt/prometheus/prometheus.yml
+
+
+      - name: Validate config
+        run: |
+          /opt/prometheus/promtool check config /opt/prometheus/prometheus.yml
+
+      - name: Rollback config
+        if: always()
+        run: |
+          if [ -f /opt/prometheus/prometheus.yml.bak ]; then
+            cp /opt/prometheus/prometheus.yml.bak /opt/prometheus/prometheus.yml
+          fi
