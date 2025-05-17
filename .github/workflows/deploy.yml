@@ -1,0 +1,34 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate YAML
+        uses: super-linter/super-linter@v7.4.0
+        with:
+          linters: yaml
+          run_linter: true
+          fail_ci_if_error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate config
+        run: |
+          /opt/prometheus/promtool check config ${{ github.workspace }}/prometheus.yml
+
+      - name: Move config
+        run: |
+          cp ${{ github.workspace }}/prometheus.yml /opt/prometheus/prometheus.yml
+      
+      - name: Apply config
+        run: |
+          curl -X POST http://localhost:9090/-/reload
