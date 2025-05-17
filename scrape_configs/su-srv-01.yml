@@ -1,0 +1,19 @@
+scrape_configs:
+  - job_name: "su-srv-01"
+    static_configs:
+      - targets: ["su-srv-01.bath.ac.uk:9100"]
+        labels:
+          app: "node_exporter"
+
+  - job_name: "su-srv-01:incus"
+    static_configs:
+      - targets: ["su-srv-01.bath.ac.uk:8443"]
+        labels:
+          app: "incus"
+    scheme: 'https'
+    metrics_path: '/1.0/metrics'
+    tls_config:
+      ca_file: 'tls/server.crt'
+      cert_file: 'tls/incus.crt'
+      key_file: 'tls/incus.key'
+      server_name: 'su-srv-01'
