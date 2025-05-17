@@ -45,3 +45,9 @@ scrape_configs:
       cert_file: 'tls/incus.crt'
       key_file: 'tls/incus.key'
       server_name: 'su-srv-01'
+
+  - job_name: "test"
+    static_configs:
+      - targets: ["su-srv-01.bath.ac.uk:9101"]
+        labels:
+          app: "test"
