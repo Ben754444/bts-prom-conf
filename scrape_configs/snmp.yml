@@ -1,0 +1,32 @@
+scrape_configs:
+ - job_name: "snmp:switch"
+
+   static_configs:
+     - targets: ["switch.office.internal.bts-crew.com", "ctrl-switch.alt.internal.bts-crew.com", "switch.shed.internal.bts-crew.com"]
+   metrics_path: /snmp
+   params:
+     auth: [public_v2]
+     module: [if_mib]
+   relabel_configs:
+     - source_labels: [__address__]
+       target_label: __param_target
+     - source_labels: [__param_target]
+       target_label: instance
+     - target_label: __address__
+       replacement: 127.0.0.1:9116
+
+ - job_name: "snmp:ap"
+
+   static_configs:
+     - targets: ["proj-ap.alt.internal.bts-crew.com", "ap.office.internal.bts-crew.com", "ap.shed.internal.bts-crew.com"]
+   metrics_path: /snmp
+   params:
+     auth: [public_v2]
+     module: [if_mib]
+   relabel_configs:
+     - source_labels: [__address__]
+       target_label: __param_target
+     - source_labels: [__param_target]
+       target_label: instance
+     - target_label: __address__
+       replacement: 127.0.0.1:9116
