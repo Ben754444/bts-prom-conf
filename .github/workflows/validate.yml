@@ -33,7 +33,7 @@ jobs:
       - name: Rollback config
         if: always()
         run: |
-          if [ -f /opt/prometheus/prometheus.yml.bak && -f /opt/prometheus/scrape_configs.bak ]; then
+          if [ -f /opt/prometheus/prometheus.yml.bak ]; then
             cp /opt/prometheus/prometheus.yml.bak /opt/prometheus/prometheus.yml
           fi
           if [ -d /opt/prometheus/scrape_configs.bak ]; then
