@@ -1,0 +1,10 @@
+scrape_configs:
+  - job_name: "bts-mimir-01/mimir"
+
+
+    static_configs:
+      - targets: ["localhost:9009"]
+        labels:
+          app: "mimir"
+          cluster: "campus-prod"
+          namespace: "bts-mimir-01"
