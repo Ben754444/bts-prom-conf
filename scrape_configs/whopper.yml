@@ -6,7 +6,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ["10.10.160.190:9182"]
+      - targets: ["thewhopper.internal.bts-crew.com:9182"]
        # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
         labels:
           app: "windows_exporter"
@@ -18,7 +18,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ["10.10.160.190:9835"]
+      - targets: ["thewhopper.internal.bts-crew.com:9835"]
        # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
         labels:
           app: "nvidia_gpu_exporter"
