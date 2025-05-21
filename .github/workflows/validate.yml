@@ -22,6 +22,7 @@ jobs:
       - name: Move config
         run: |
           cp ${{ github.workspace }}/prometheus.yml /opt/prometheus/prometheus.yml
+          rm -rf /opt/prometheus/scrape_configs/*
           cp -TR ${{ github.workspace }}/scrape_configs /opt/prometheus/scrape_configs
 
 
@@ -32,9 +33,10 @@ jobs:
       - name: Rollback config
         if: always()
         run: |
-          if [ -f /opt/prometheus/prometheus.yml.bak && -f /opt/prometheus/scrape_configs.bak ]; then
+          if [ -f /opt/prometheus/prometheus.yml.bak ]; then
             cp /opt/prometheus/prometheus.yml.bak /opt/prometheus/prometheus.yml
           fi
           if [ -d /opt/prometheus/scrape_configs.bak ]; then
+            rm -rf /opt/prometheus/scrape_configs/*
             cp -TR /opt/prometheus/scrape_configs.bak /opt/prometheus/scrape_configs
           fi
