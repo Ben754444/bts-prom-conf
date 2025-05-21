@@ -19,3 +19,6 @@ rule_files:
   # - "second_rules.yml"
 scrape_config_files:
   - "scrape_configs/*.yml"
+
+remote_write:
+  - url: http://localhost:9009/api/v1/push
