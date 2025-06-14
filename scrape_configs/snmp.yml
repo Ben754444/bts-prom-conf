@@ -18,7 +18,7 @@ scrape_configs:
  - job_name: "snmp:ap"
 
    static_configs:
-     - targets: ["proj-ap.alt.internal.bts-crew.com", "ap.office.internal.bts-crew.com", "ap.shed.internal.bts-crew.com"]
+     - targets: ["proj-router.alt.internal.bts-crew.com", "router.office.internal.bts-crew.com", "router.shed.internal.bts-crew.com"]
    metrics_path: /snmp
    params:
      auth: [public_v2]
