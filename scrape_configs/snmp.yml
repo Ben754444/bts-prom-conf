@@ -18,7 +18,7 @@ scrape_configs:
  - job_name: "snmp:ap"
 
    static_configs:
-     - targets: ["proj-router.su-srv-01.internal.bts-crew.com", "office-router.su-srv-01.internal.bts-crew.com", "shed-router.su-srv-01.internal.bts-crew.com", "drama-router.su-srv-01.internal.bts-crew.com", "touring-router-01.su-srv-01.internal.bts-crew.com", "touring-router-02.su-srv-01.internal.bts-crew.com", "weston-router.su-srv-01.internal.bts-crew.com"]
+     - targets: ["proj-router.su-srv-01.internal.bts-crew.com", "office-router.su-srv-01.internal.bts-crew.com", "shed-router.su-srv-01.internal.bts-crew.com", "drama-router.su-srv-01.internal.bts-crew.com", "touring-router-01.su-srv-01.internal.bts-crew.com", "touring-router-02.su-srv-01.internal.bts-crew.com", "weston-router.su-srv-01.internal.bts-crew.com", "ap.alt.internal.bts-crew.com"]
    metrics_path: /snmp
    params:
      auth: [public_v2]
