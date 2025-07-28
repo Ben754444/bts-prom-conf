@@ -10,3 +10,11 @@ scrape_configs:
        # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
         labels:
           app: "prometheus"
+
+
+  - job_name: "misc"
+
+    static_configs:
+      - targets: ["192.168.10.70:3333"]
+        labels:
+          app: "misc"
