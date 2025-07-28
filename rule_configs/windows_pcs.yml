@@ -1,0 +1,13 @@
+groups:
+- name: windows_pcs
+  labels:
+#    team: myteam
+  rules:
+  - alert: "WindowsScheduledTaskFailure"
+    expr: "windows_scheduled_task_last_result{task='/BTS Backup to NAS'} == 0"
+    for: "1m"
+    labels:
+      severity: "high"
+    annotations:
+      summary: "Backup Failed"
+      description: "Scheduled task '{{ $labels.task }}' has failed"
