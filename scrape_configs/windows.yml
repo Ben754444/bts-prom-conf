@@ -1,0 +1,12 @@
+scrape_configs:
+  - job_name: "windows_machines"
+    static_configs:
+      - targets: ["thewhopper.internal.bts-crew.com:9182"]
+        labels:
+          app: "windows_exporter"
+          machine: "thewhopper"
+      - targets: ["bts-opt-9020-to.internal.bts-crew.com:9182"]
+        labels:
+          app: "windows_exporter"
+          machine: "bts-opt-9020-to"
+          
