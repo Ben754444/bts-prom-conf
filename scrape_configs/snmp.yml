@@ -30,3 +30,19 @@ scrape_configs:
        target_label: instance
      - target_label: __address__
        replacement: 127.0.0.1:9116
+
+ - job_name: "snmp:pfsense"
+
+   static_configs:
+     - targets: ["138.38.11.56"]
+   metrics_path: /snmp
+   params:
+     auth: [public_v2]
+     module: [pfsense]
+   relabel_configs:
+     - source_labels: [__address__]
+       target_label: __param_target
+     - source_labels: [__param_target]
+       target_label: instance
+     - target_label: __address__
+       replacement: 127.0.0.1:9116
