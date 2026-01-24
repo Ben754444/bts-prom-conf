@@ -9,4 +9,9 @@ scrape_configs:
         labels:
           app: "windows_exporter"
           machine: "bts-opt-9020-to"
+      - targets: ["bts-office-vect.office.internal.bts-crew.com:9182"]
+        labels:
+          app: "windows_exporter"
+          machine: "vectorworks"
+
           
