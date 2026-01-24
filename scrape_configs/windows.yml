@@ -12,6 +12,6 @@ scrape_configs:
       - targets: ["bts-office-vect.office.internal.bts-crew.com:9182"]
         labels:
           app: "windows_exporter"
-          machine: "vectorworks"
+          machine: "bts-office-vect"
 
           
