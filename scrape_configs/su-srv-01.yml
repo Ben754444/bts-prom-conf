@@ -22,7 +22,7 @@ scrape_configs:
     static_configs:
       - targets: ["su-srv-01.bath.ac.uk:8444"]
         labels:
-          app: "incus"
+          app: "lxc"
     scheme: 'https'
     metrics_path: '/1.0/metrics'
     tls_config:
