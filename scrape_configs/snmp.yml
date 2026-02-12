@@ -2,7 +2,7 @@ scrape_configs:
  - job_name: "snmp:switch"
 
    static_configs:
-     - targets: ["switch.office.internal.bts-crew.com", "ctrl-switch.alt.internal.bts-crew.com", "switch.shed.internal.bts-crew.com", "switch.weston.internal.bts-crew.com"]
+     - targets: ["switch.office.internal.bts-crew.com", "ctrl-switch.alt.internal.bts-crew.com", "switch.shed.internal.bts-crew.com", "switch.weston.internal.bts-crew.com", "sw-core.ben.internal.bts-crew.com"]
    metrics_path: /snmp
    params:
      auth: [public_v2]
