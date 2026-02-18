@@ -34,7 +34,7 @@ scrape_configs:
  - job_name: "snmp:pfsense"
 
    static_configs:
-     - targets: ["138.38.11.56"]
+     - targets: ["138.38.11.56", "138.38.11.57"]
    metrics_path: /snmp
    params:
      auth: [public_v2]
