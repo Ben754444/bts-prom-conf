@@ -17,3 +17,16 @@ scrape_configs:
       cert_file: '../tls/incus.crt'
       key_file: '../tls/incus.key'
       server_name: 'su-srv-01'
+
+  - job_name: "su-srv-01:lxd"
+    static_configs:
+      - targets: ["su-srv-01.bath.ac.uk:8444"]
+        labels:
+          app: "lxc"
+    scheme: 'https'
+    metrics_path: '/1.0/metrics'
+    tls_config:
+      ca_file: '../tls/lxdserver.crt'
+      cert_file: '../tls/lxd.crt'
+      server_name: 'archlinux'
+      key_file: '../tls/lxd.key'

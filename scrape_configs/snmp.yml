@@ -2,7 +2,7 @@ scrape_configs:
  - job_name: "snmp:switch"
 
    static_configs:
-     - targets: ["switch.office.internal.bts-crew.com", "ctrl-switch.alt.internal.bts-crew.com", "switch.shed.internal.bts-crew.com", "switch.weston.internal.bts-crew.com"]
+     - targets: ["switch.office.internal.bts-crew.com", "ctrl-switch.alt.internal.bts-crew.com", "switch.shed.internal.bts-crew.com", "switch.weston.internal.bts-crew.com", "sw-core.ben.internal.bts-crew.com"]
    metrics_path: /snmp
    params:
      auth: [public_v2]
@@ -34,11 +34,26 @@ scrape_configs:
  - job_name: "snmp:pfsense"
 
    static_configs:
-     - targets: ["138.38.11.56"]
+     - targets: ["138.38.11.56", "138.38.11.57"]
    metrics_path: /snmp
    params:
      auth: [public_v2]
      module: [pfsense]
+   relabel_configs:
+     - source_labels: [__address__]
+       target_label: __param_target
+     - source_labels: [__param_target]
+       target_label: instance
+     - target_label: __address__
+       replacement: 127.0.0.1:9116
+
+ - job_name: "snmp:aruba_ap"
+   static_configs:
+     - targets: ["10.45.100.254:3998"]
+   metrics_path: /snmp
+   params:
+     auth: [public_v2]
+     module: [aruba_ap]
    relabel_configs:
      - source_labels: [__address__]
        target_label: __param_target

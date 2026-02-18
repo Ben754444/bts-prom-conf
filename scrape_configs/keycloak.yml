@@ -6,3 +6,10 @@ scrape_configs:
           app: "keycloak"
     scheme: 'https'
     metrics_path: '/realms/bts-prod/metrics'
+  - job_name: "keycloak:cloud"
+    static_configs:
+      - targets: ["keycloak.aws.internal.bts-crew.com:8080"]
+        labels:
+          app: "keycloak"
+    scheme: 'http'
+    metrics_path: '/realms/prod/metrics'
