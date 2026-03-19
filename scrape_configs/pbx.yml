@@ -1,0 +1,6 @@
+scrape_configs:
+  - job_name: "pbx"
+    static_configs:
+      - targets: ["pbx.bts-crew.com:8088"]
+        labels:
+          app: "pbx"
