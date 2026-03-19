@@ -1,5 +1,6 @@
 scrape_configs:
   - job_name: "pbx"
+    fallback_scrape_protocol: PrometheusText1.0.0
     static_configs:
       - targets: ["pbx.bts-crew.com:8088"]
         labels:
