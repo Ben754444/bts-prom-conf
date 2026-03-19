@@ -19,3 +19,10 @@ scrape_configs:
       - targets: ["192.168.10.70:3333"]
         labels:
           app: "misc"
+
+
+  - job_name: "edge_dsp"
+    static_configs:
+      - targets: ["192.168.10.70:5444"]
+        labels:
+          app: "dsp"
