@@ -1,0 +1,8 @@
+scrape_configs:
+  - job_name: "cem3"
+    scrape_interval: 1m
+
+    static_configs:
+      - targets: ["192.168.10.70:3787"]
+        labels:
+          app: "cem3_exporter"
