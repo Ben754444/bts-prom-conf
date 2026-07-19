@@ -6,3 +6,15 @@ scrape_configs:
       - targets: ["localhost:3100"]
         labels:
           app: "loki"
+
+  - job_name: "loki:memcached:chunks"
+    static_configs:
+      - targets: ["localhost:9152"]
+        labels:
+          app: "memcached"
+  - job_name: "loki:memcached:results"
+    static_configs:
+      - targets: ["localhost:9153"]
+        labels:
+          app: "memcached"
+
