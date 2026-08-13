@@ -11,6 +11,17 @@ scrape_configs:
         labels:
           app: "prometheus"
 
+  - job_name: "alloy"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["localhost:12345"]
+       # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
+        labels:
+          app: "alloy"
+
 
   - job_name: "misc"
     scrape_interval: 1h
