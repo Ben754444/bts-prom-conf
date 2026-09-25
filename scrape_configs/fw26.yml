@@ -1,0 +1,33 @@
+scrape_configs:
+ - job_name: "fw26:snmp:base"
+   scrape_interval: 15s
+   static_configs:
+     - targets: ["10.0.2.1", "10.0.2.2", "10.0.2.3", "10.0.2.4", "10.0.2.5", "10.0.2.6"]
+   metrics_path: /snmp
+   params:
+     auth: [public_v2]
+     module: [cisco_interfaces, cisco_health, cisco_poe]
+   relabel_configs:
+     - source_labels: [__address__]
+       target_label: __param_target
+     - source_labels: [__param_target]
+       target_label: instance
+     - target_label: __address__
+       replacement: 10.10.100.151:9116
+
+
+ - job_name: "fw26:snmp:detail"
+   scrape_interval: 1m
+   static_configs:
+     - targets: ["10.0.2.1", "10.0.2.2", "10.0.2.3", "10.0.2.4", "10.0.2.5", "10.0.2.6"]
+   metrics_path: /snmp
+   params:
+     auth: [public_v2]
+     module: [cisco_optics, cisco_lldp, cisco_stp, cisco_mac, cisco_multicast]
+   relabel_configs:
+     - source_labels: [__address__]
+       target_label: __param_target
+     - source_labels: [__param_target]
+       target_label: instance
+     - target_label: __address__
+       replacement: 10.10.100.151:9116
