@@ -1,0 +1,34 @@
+# BC
+
+scrape_configs:
+  - job_name: "openwrt"
+
+    static_configs:
+      - targets: ["10.10.160.254:9100"]
+        labels:
+          app: "openwrt_exporter"
+          machine: "ALT Aerohive"
+          aerohive: "ALT"
+      - targets: ["10.10.170.254:9100"]
+        labels:
+          app: "openwrt_exporter"
+          machine: "Office Aerohive"
+          aerohive: "Office"
+
+      - targets: ["10.10.190.254:9100"]
+        labels:
+          app: "openwrt_exporter"
+          machine: "Tub Aruba"
+          aerohive: "Tub"
+
+      - targets: ["10.10.180.254:9100"]
+        labels:
+          app: "openwrt_exporter"
+          machine: "Drama Store Aerohive"
+          aerohive: "Drama Store"
+
+      - targets: ["10.10.151.1:9100"]
+        labels:
+          app: "openwrt_exporter"
+          machine: "Shed Aerohive"
+          aerohive: "Shed"
