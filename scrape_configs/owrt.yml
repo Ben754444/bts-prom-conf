@@ -32,3 +32,9 @@ scrape_configs:
           app: "openwrt_exporter"
           machine: "Shed Aerohive"
           aerohive: "Shed"
+          
+      - targets: ["10.10.185.254:9100"]
+        labels:
+          app: "openwrt_exporter"
+          machine: "Weston Aerohive"
+          aerohive: "Weston"
