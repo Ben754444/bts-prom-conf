@@ -1,0 +1,8 @@
+scrape_configs:
+  - job_name: "radio-channels"
+    scrape_interval: 15s
+
+    static_configs:
+      - targets: ["radio-channels.internal.bts-crew.com:8000"]
+        labels:
+          app: "radio-channels"
