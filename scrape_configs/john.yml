@@ -6,7 +6,7 @@ scrape_configs:
         labels:
           app: "synapse"
   - job_name: "john_homeassistant"
-    scrape_interval: 15s
+    scrape_interval: 5s
     metrics_path: "/api/prometheus"
     scheme: http
     static_configs:
