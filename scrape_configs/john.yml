@@ -5,3 +5,9 @@ scrape_configs:
       - targets: ["10.20.46.10:9000"]
         labels:
           app: "synapse"
+  - job_name: "hass"
+    scrape_interval: 60s
+    metrics_path: /api/prometheus
+    scheme: http
+    static_configs:
+      - targets: ['homeassistant.oxford.lucas']
