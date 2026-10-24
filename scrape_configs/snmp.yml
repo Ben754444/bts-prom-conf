@@ -49,7 +49,7 @@ scrape_configs:
 
  - job_name: "snmp:aruba_ap"
    static_configs:
-     - targets: ["10.45.100.254:3998"]
+     - targets: ["10.45.100.254:3998", "10.10.160.4"]
    metrics_path: /snmp
    params:
      auth: [public_v2]
