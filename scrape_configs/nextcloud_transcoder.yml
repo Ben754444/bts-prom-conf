@@ -1,0 +1,8 @@
+scrape_configs:
+  - job_name: 'BTS-NC-Transcode'
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+    static_configs:
+    - targets: ["192.168.15.162:47789"]
+      labels:
+        app: "nextcloud-transcode"
