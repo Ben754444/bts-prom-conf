@@ -8,3 +8,8 @@ scrape_configs:
           app: "mimir"
           cluster: "campus-prod"
           namespace: "bts-mimir-01"
+  - job_name: "mimir:memcached"
+    static_configs:
+      - targets: ["localhost:9154"]
+        labels:
+          app: "memcached"
